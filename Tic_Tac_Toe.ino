@@ -24,6 +24,7 @@ as well as Adafruit raw 1.8" TFT display
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_ST7735.h> // Hardware-specific library
 #include <SPI.h>
+#include "Hardware.h"
 
 
 // For the breakout, you can use any 2 or 3 pins
@@ -46,9 +47,12 @@ Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS,  TFT_DC, TFT_RST);
 
 int h = tft.height();
 int w = tft.width();
+Hardware tic;
 
 void setup(void) {
-  Serial.begin(9600);
+  Serial.begin(115200);
+  tic = Hardware();
+  
  // Serial.print("Hello! ST7735 TFT Test");
 
   // Use this initializer if you're using a 1.8" TFT
@@ -63,7 +67,13 @@ void setup(void) {
 
 void loop() 
 {
-  drawGrid();
+//  drawGrid();
+    Serial.print("Button 1: ");
+    if(tic.button1Pressed())
+        Serial.println("Pressed");
+    else
+        Serial.println("Not Pressed");
+    delay(1000);
 }
 
 void drawGrid()
