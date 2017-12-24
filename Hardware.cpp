@@ -10,7 +10,7 @@ Hardware::Hardware(){
 Hardware::Hardware(int b1, int b2, int b3){
     BUTTON1 = b1;
     BUTTON2 = b2;
-    BUTTON3 = b3;
+BUTTON3 = b3;
     SLIDE = A0;
 }
 
@@ -27,6 +27,6 @@ bool Hardware::button3Pressed(){
 }
 
 int Hardware::getSlideVal(){
-    return map(analogRead(SLIDE), 0, 1023, 2, 0);
+    return map(analogRead(SLIDE), 0, 1023, 3, 0);
 }
 
